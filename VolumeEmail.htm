@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<title>Orion Alert: ${N=Alerting;M=AlertName} for ${N=SwisEntity;M=Caption} on ${N=SwisEntity;M=Node.Caption}</title>
+<style type="text/css">
+.alert_header {
+    font-family: calibri;
+    font-size: 16pt;
+    color: navy;
+    text-align: left;
+    font-weight: bold;
+    vertical-align: center;
+}
+.alert_description {
+    font-family: calibri;
+    font-size: 14pt;
+    color: gray;
+    text-align: left;
+    font-weight: bold;
+    vertical-align: center;
+}
+.alert_details {
+    font-family: calibri;
+    font-size: 10pt;
+    color: gray;
+    text-align: left;
+    font-weight: bold;
+    vertical-align: center;
+}
+th {
+    font-family: calibri;
+    font-size: 12pt;
+    font-weight: bold;
+    color: white;
+    background-color: #f99d1c;
+    text-align: left;
+    vertical-align: middle;
+}
+td {
+    font-family: calibri;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #04c9d7;
+    background-color: #eeeeee;
+    text-align: left;
+    vertical-align: middle;
+}
+}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="1" width="792" border="0">
+  <tr>
+    <td><table cellspacing="0" cellpadding="0" width="792" border="0">
+        <tr>
+          <td class="alert_header">${N=SwisEntity;M=Caption} on ${N=SwisEntity;M=Node.Caption} has less than 10% and 1GB free space.</td>
+        </tr>
+        <tr>
+          <td class="alert_description">There is less than 10% and 1GB free on ${N=SwisEntity;M=Caption} on ${N=SwisEntity;M=Node.Caption}.  Temp files and extraneous logs have already been removed.</td>
+        </tr>
+        <tr>
+          <td class="alert_details">Alert Name: ${N=Alerting;M=AlertName} / Trigger Time: ${N=Alerting;M=AlertTriggerTime;F=DateTime}</td>
+        </tr>
+      </table>
+      <table cellspacing="0" cellpadding="1" width="792" border="1" bordercolor="#003366">
+        <tr>
+          <td><table cellspacing="0" cellpadding="3" width="100%" border="0">
+              <tr>
+                <th>Node</th>
+                <td><img src="http://ORIONSERVER/Orion/images/StatusIcons/${N=SwisEntity;M=Node.StatusLED}" alt="${N=SwisEntity;M=Node.StatusDescription}" width="16" height="16"></td>
+                <td><a href="http://ORIONSERVER/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:${N=SwisEntity;M=NodeID}">${N=SwisEntity;M=Node.Caption} / ${N=SwisEntity;M=Node.IP_Address}</a></td>
+              </tr>
+              <tr>
+                <th>Volume</th>
+                <td><img src="http://ORIONSERVER/NetPerfMon/images/Volumes/${N=SwisEntity;M=Icon}" alt="${N=SwisEntity;M=Caption}" width="16" height="16"></td>
+                <td><a href="http://ORIONSERVER/Orion/NetPerfMon/VolumeDetails?NetObject=V:${N=SwisEntity;M=VolumeID}">${N=SwisEntity;M=Caption}</a></td>
+              </tr>
+              <tr>
+                <th>Volume Status</th>
+                <td><img src="http://ORIONSERVER/Orion/images/StatusIcons/${N=SwisEntity;M=StatusIcon}" width="16" height="16" alt="${N=SwisEntity;M=Status}"></td>
+                <td>${N=SwisEntity;M=StatusDescription}</td>
+              </tr>
+              <tr>
+                <th>Free Space</th>
+                <td>&nbsp;</td>
+                <td>${N=SwisEntity;M=VolumeSpaceAvailable} of ${N=SwisEntity;M=VolumeSize} (${N=SwisEntity;M=VolumePercentAvailable} free)</td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td class="alert_details">Alert Details: ${N=Alerting;M=AlertDescription}</td>
+  </tr>
+  <tr>
+    <td class="alert_details">Acknowledge ${N=Alerting;M=AcknowledgeUrl}</td>
+  </tr>
+</table>
+</body>
+</html>
